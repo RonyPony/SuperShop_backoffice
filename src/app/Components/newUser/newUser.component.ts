@@ -33,9 +33,7 @@ export class NewUserComponent implements OnInit {
   register() {
     this.registerRequest = {
       name: this.registerForm.get('nombre')?.value,
-      role: this.registerForm.get('role')?.value,
-      registerDate: new Date(),
-      bornDate: this.registerForm.get('bornDate')?.value,
+      lastName: this.registerForm.get('lastname')?.value,
       userName: this.registerForm.get('userName')?.value,
       email: this.registerForm.get('email')?.value,
       password: this.registerForm.get('password')?.value,
@@ -53,7 +51,6 @@ export class NewUserComponent implements OnInit {
           this.authenticationService.registerAccount(
             this.registerRequest
           ).subscribe(response => {
-
             console.log(response);
           });
         }

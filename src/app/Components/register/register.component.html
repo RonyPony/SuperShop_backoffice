@@ -22,7 +22,7 @@
 
     <div class="card">
       <div class="card-body register-card-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">Register in SuperShop</p>
 
         <form [formGroup]='registerForm' (ngSubmit)='registerAccount()'>
           <div class="input-group mb-3">
@@ -34,7 +34,15 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" formControlName="name" placeholder="name">
+            <input type="text" class="form-control" formControlName="name" placeholder="Name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Last Name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -57,22 +65,8 @@
               </div>
             </div>
           </div>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" formControlName="phoneNumber" placeholder="numberPhone">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
-          <div class="input-group mb-3">
-            <input type="password" class="form-control" formControlName="bornDate" placeholder="borndate">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
+         
+         
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Retype password">
             <div class="input-group-append">

@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     userName: new FormControl(''),
     name: new FormControl(''),
+    lastname: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     phoneNumber: new FormControl(''),
@@ -35,17 +36,15 @@ export class RegisterComponent implements OnInit {
 
   registerAccount() {
     this.registerAccountRequest = {
-      name: this.registerForm.get('nombre')?.value,
-      role: this.registerForm.get('role')?.value,
-      registerDate: new Date(),
-      bornDate: this.registerForm.get('bornDate')?.value,
-      userName: this.registerForm.get('username')?.value,
+      name: this.registerForm.get('name')?.value,
+      lastName: this.registerForm.get('lastname')?.value,
+      userName: this.registerForm.get('userName')?.value,
       email: this.registerForm.get('email')?.value,
-      password: this.registerForm.get('pawwsord')?.value,
+      password: this.registerForm.get('password')?.value,
     }
-    console.log(this.registerAccountRequest);
+    // console.log(this.registerAccountRequest);
 
-    // this.authenticationService.registerAccount();
+     this.authenticationService.registerAccount(this.registerAccountRequest);
   }
 
 }

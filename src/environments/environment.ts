@@ -6,8 +6,9 @@
 // const String baseApiUrl = "https://bsite.net/ronytuquizz/api";
 // const String baseApiUrl = "http://polidom2.somee.com/api";
 export const environment = {
-  production: false,
-  apiUrl: 'https://bsite.net/ronytuquizz/api'
+  production: true,
+  // apiUrl: 'https://super-shop-api.herokuapp.com/'
+  apiUrl:'https://localhost:7018/'
 };
 
 /*
