@@ -205,22 +205,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>Usuarios</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a [routerLink]="'/tiendas'" class="nav-link">
+                    <i class="fa fa-star nav-icon"></i>
+                    <p>Tiendas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="'/categories'" class="nav-link">
+                    <i class="fas fa-comments nav-icon"></i>
+                    <p>Categorias</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="'/mall'" class="nav-link">
+                    <i class="fas fa-bars nav-icon"></i>
+                    <p>Mall</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="'/orders'" class="nav-link">
+                    <i class="fas fa-file nav-icon"></i>
+                    <p>Ordenes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="'/products'" class="nav-link">
+                    <i class="fas fa-th nav-icon"></i>
+                    <p>Productos</p>
+                  </a>
+                </li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="'/reports'" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Reportes
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="'/attached'" class="nav-link">
-                <i class="fas fa-file nav-icon"></i>
-                <p>Adjuntos</p>
-              </a>
             </li>
           </ul>
         </nav>

@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
         .registerAccount(this.registerAccountRequest)
         .subscribe((response) => {
           var resp = response as LoginResponse;
-          console.log(response[]);
+          console.log(response);
           if (resp.result.isSuccess) {
             localStorage.setItem("currentUser", JSON.stringify(response));
             this.router.navigate(["/home"]);
