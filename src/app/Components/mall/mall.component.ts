@@ -16,7 +16,7 @@ export class MallComponent implements OnInit {
   }
 
   loadMalls() {
-    this.mallService.getAllCategories().subscribe((response) => {
+    this.mallService.getAllMalls().subscribe((response) => {
       var resp = response as unknown as Mall[];
       this.allMalls = response as unknown as Mall[];
       console.log(response);

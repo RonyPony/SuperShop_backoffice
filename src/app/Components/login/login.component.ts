@@ -2,6 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, NgControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { AccountInfo, AccountInfoResponse } from "src/app/models/accountInfo";
 import { LoginRequest } from "src/app/models/loginRequest";
 import { LoginResponse } from "src/app/models/loginResponse";
 import { AuthenticationService } from "src/app/services/authentication.service";
@@ -45,8 +46,20 @@ export class LoginComponent implements OnInit {
       (response) => {
         var resp = response as LoginResponse;
         if (resp.result.isSuccess) {
-          localStorage.setItem("currentUser", JSON.stringify(response));
-          this.router.navigate(["/home"]);
+          this.authenticationService.getUserByEmail(this.loginRequest!.userName).subscribe((response)=>{
+            var resp= response as AccountInfoResponse;
+            if (resp.isSuccess) {
+              localStorage.setItem("currentUser", JSON.stringify(resp));
+            this.router.navigate(["/home"]);
+            }else{
+              Swal.fire(
+                "Hey!",
+                "Infomacion correcta, pero no pudimos cargar tu informacion, favor comunicate con el administrador",
+                "error"
+              );
+            }
+          })
+          
         } else {
           Swal.fire(
             "Ups!",

@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <img src="../../../assets/img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">Usuario Activo</a>
           </div>
         </div>
 
@@ -272,49 +272,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="col-lg-5">
                 <div class="card">
                   <div class="card-header">
-                    <h5 class="m-0">Reportes</h5>
+                    <!-- <h5 class="m-0">Reportes</h5> -->
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-3">
                         <div class="small-box bg-danger">
                           <div class="inner">
-                            <h3>{{panic}}</h3>
+                            <h3>{{tiendas}}</h3>
 
-                            <p>Modo Panico</p>
+                            <p>Tiendas</p>
                           </div>
                           <div class="icon">
                             <i class="ion ion-bag"></i>
                           </div>
-                          <a [routerLink]="'/reports'" class="small-box-footer">Detalles <i
+                          <a [routerLink]="'/tiendas'" class="small-box-footer">Detalles <i
                               class="fas fa-arrow-circle-right"></i></a>
                         </div>
                       </div>
                       <div class="col-lg-3">
                         <div class="small-box bg-info">
                           <div class="inner">
-                            <h3>{{allReports}}</h3>
+                            <h3>{{productos}}</h3>
 
-                            <p>Total de reportes</p>
+                            <p>Productos</p>
                           </div>
                           <div class="icon">
                             <i class="ion ion-bag"></i>
                           </div>
-                          <a [routerLink]="'/reports'" class="small-box-footer">Detalles <i
+                          <a [routerLink]="'/products'" class="small-box-footer">Detalles <i
                               class="fas fa-arrow-circle-right"></i></a>
                         </div>
                       </div>
                       <div class="col-lg-3">
                         <div class="small-box bg-warning">
                           <div class="inner">
-                            <h3>{{completed}}</h3>
+                            <h3>{{malls}}</h3>
 
-                            <p>Atendidos</p>
+                            <p>Malls</p>
                           </div>
                           <div class="icon">
                             <i class="ion ion-bag"></i>
                           </div>
-                          <a [routerLink]="'/reports'" class="small-box-footer">Detalles <i
+                          <a [routerLink]="'/mall'" class="small-box-footer">Detalles <i
                               class="fas fa-arrow-circle-right"></i></a>
                         </div>
                       </div>
@@ -337,14 +337,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="col-lg-5">
                 <div class="card">
                   <div class="card-header">
-                    <h5 class="m-0">Usuarios</h5>
+                    <!-- <h5 class="m-0">Usuarios</h5> -->
                   </div>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-3">
                         <div class="small-box bg-success">
                           <div class="inner">
-                            <h3>{{allUsers}}</h3>
+                            <h3>{{users}}</h3>
 
                             <p>Total Usuarios</p>
                           </div>
@@ -358,14 +358,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <div class="col-lg-3">
                         <div class="small-box bg-info">
                           <div class="inner">
-                            <h3>{{authorities}}</h3>
+                            <h3>{{orders}}</h3>
 
-                            <p>Autoridades</p>
+                            <p>Ordenes</p>
                           </div>
                           <div class="icon">
                             <i class="ion ion-bag"></i>
                           </div>
-                          <a [routerLink]="'/reports'" class="small-box-footer">Detalles <i
+                          <a [routerLink]="'/orders'" class="small-box-footer">Detalles <i
                               class="fas fa-arrow-circle-right"></i></a>
                         </div>
                       </div>
@@ -390,21 +390,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-lg-5">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="m-0">Pruebas</h5>
+                  <!-- <h5 class="m-0">Pruebas</h5> -->
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-lg-9">
                       <div class="small-box bg-success">
                         <div class="inner">
-                          <h3>{{allImages}}</h3>
+                          <h3>{{categories}}</h3>
 
-                          <p>Imagenes adjuntadas</p>
+                          <p>Categorias</p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Detalles <i class="fas fa-arrow-circle-right"></i></a>
+                        <a [routerLink]="'/categories'" class="small-box-footer">Detalles <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
                   </div>

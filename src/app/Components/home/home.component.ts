@@ -1,5 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import { AccountInfo, AccountInfoResponse } from "src/app/models/accountInfo";
+import { Branch } from "src/app/models/branch";
+import { Category } from "src/app/models/category";
+import { Mall } from "src/app/models/mall";
+import { Product } from "src/app/models/product";
+import { BranchService } from "src/app/services/branch.service";
+import { CategoryService } from "src/app/services/category.service";
 import { ImageService } from "src/app/services/image.service";
+import { MallService } from "src/app/services/mall.service";
+import { ProductService } from "src/app/services/product.service";
 import { ReportsService } from "src/app/services/reports.service";
 import { UserService } from "src/app/services/user.service";
 
@@ -9,55 +18,76 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  panic: number = 0;
-  allReports: number = 0;
-  completed: number = 0;
-  allUsers: number = 0;
-  authorities: number = 0;
-  allImages: number = 0;
+  currentUser!: AccountInfo;
+  tiendas: number = 0;
+  productos: number = 0;
+  malls: number = 0;
+  users: number = 0;
+  orders: number = 0;
+  categories: number = 0;
   constructor(
-    private reportService: ReportsService,
-    private userService: UserService,
-    private imageService: ImageService
+    private branchStore: BranchService,
+    private productService: ProductService,
+    private mallService: MallService,
+    private userService:UserService,
+    private categorySerice:CategoryService
   ) {}
 
   ngOnInit() {
-    this.countPanic();
-    this.countCompleted();
-    this.countAll();
+    var tmpUser =  localStorage.getItem('currentUser') as unknown as AccountInfoResponse
+    // this.currentUser = tmpUser.data.find(e=>true)
+    console.log(localStorage.getItem('currentUser'))
+    this.countBranch();
+    this.countProduct();
+    this.countMalls();
     this.countUsers();
-    this.countImages();
+    this.countCategories();
+  }
+  countBranch() {
+    this.branchStore.getAllBranches().subscribe((all) => {
+      var list = all  as  Branch[];
+
+      this.tiendas = list.length;
+    });
+  }
+  countProduct() {
+    this.productService.getAllProducts().subscribe((all) => {
+      var list = all  as  Product[];
+
+      this.productos = list.length;
+    });
+  }
+
+  countMalls() {
+    this.mallService.getAllMalls().subscribe((all) => {
+      var list = all  as  Mall[];
+
+      this.malls = list.length;
+    });
+  }
+
+  countCategories() {
+    this.categorySerice.getAllCategories().subscribe((all) => {
+      var list = all  as  Category[];
+
+      this.categories = list.length;
+    });
+  }
+
+  countOrdrs() {
+    // this.or.().subscribe((all) => {
+    //   var list = all  as  Mall[];
+
+    //   this.malls = list.length;
+    // });
   }
   countUsers() {
     this.userService.getAllUsers().subscribe((all) => {
-      this.allUsers = all.length;
+      var list = all as unknown as AccountInfoResponse;
+      var x = list.data;
+      this.users = x.length;
     });
   }
 
-  countImages() {
-    this.imageService.getAllImages().subscribe((todas) => {
-      this.allImages = todas.length;
-      console.log(this.allImages);
-    });
-  }
-
-  countAll() {
-    this.reportService.getReports().subscribe((reports) => {
-      this.allReports = reports.length + this.panic;
-    });
-  }
-  countCompleted() {
-    this.reportService.getReports().subscribe((reports) => {
-      reports.forEach((kk) => {
-        if (kk.isCompleted == true) {
-          this.completed++;
-        }
-      });
-    });
-  }
-  countPanic() {
-    this.reportService.getAllPanicReports().subscribe((reports) => {
-      this.panic = reports.length;
-    });
-  }
+ 
 }

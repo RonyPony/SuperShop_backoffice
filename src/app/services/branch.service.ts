@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Branch } from "../models/branch";
 
 @Injectable({
   providedIn: "root",

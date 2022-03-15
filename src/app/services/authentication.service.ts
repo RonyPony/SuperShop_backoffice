@@ -16,6 +16,10 @@ export class AuthenticationService {
     return this.http.get(`${this.apiUrl}api/auth/UserAuth/users`);
   }
 
+  getUserByEmail(email:string) {
+    return this.http.get(`${this.apiUrl}api/auth/UserAuth/user/`+email);
+  }
+
   login(request: LoginRequest) {
     return this.http.post(`${this.apiUrl}api/auth/UserAuth/login`, request);
   }

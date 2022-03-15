@@ -9,7 +9,7 @@ export class MallService {
   apiUrl = "https://super-shop-api.herokuapp.com/";
   constructor(private http: HttpClient) {}
 
-  getAllCategories() {
+  getAllMalls() {
     return this.http.get<Mall[]>(`${this.apiUrl}api/Mall/All`);
   }
 }
