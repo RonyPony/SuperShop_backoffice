@@ -1,7 +1,4 @@
 export interface Product {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
   name: string;
   code: string;
   description: string;
@@ -9,4 +6,7 @@ export interface Product {
   stock: number;
   imageUrl: string;
   branchId: string;
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

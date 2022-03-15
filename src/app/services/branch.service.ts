@@ -5,7 +5,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class BranchService {
-  apiUrl = "https://localhost:7018/";
+  // apiUrl = "https://localhost:7018/";
+  apiUrl = "https://super-shop-api.herokuapp.com/";
   constructor(private http: HttpClient) {}
 
   getAllBranches() {

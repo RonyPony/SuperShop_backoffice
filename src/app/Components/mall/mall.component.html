@@ -280,7 +280,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Total de Malls **</h3>
+                                                    <h3 class="card-title">Total de Malls {{allMalls.length}}</h3>
 
                                                     <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -303,16 +303,24 @@
                                                             <tr>
                                                                 <!-- <th>ID</th> -->
                                                                 <th>Nombre</th>
-                                                                <th>Usuario</th>
-                                                                <th>Tipo de usuario</th>
-                                                                <th>Registrado en</th>
-                                                                <th>Fecha de nacimiento</th>
-                                                                <th>Correo</th>
+                                                                <th>Logo</th>
+                                                                <th>Tiendas</th>
                                                                 <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-
+                                                            <tr *ngFor="let mall of allMalls">
+                                                                <!-- <td>{{mall.id}}</td> -->
+                                                                <td>{{mall.name}}</td>
+                                                                <td><img [src]="[mall.imageUrl]" height="50"></td>
+                                                                <td>contiene {{mall.branches.length}}</td>
+                                                                <td>
+                                                                    <a [routerLink]="['/userReports/'+mall.id]"
+                                                                        class="btn btn-sm mx-2 btn-primary">Editar</a>
+                                                                    <a [routerLink]="['/userDetail/'+mall.id]"
+                                                                        class="btn btn-sm mx-2 btn-danger">Eliminar</a>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>

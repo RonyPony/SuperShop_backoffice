@@ -1,16 +1,17 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AttachedImage } from '../models/attachedImage';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { AttachedImage } from "../models/attachedImage";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ImageService {
-  allImages: Observable<AttachedImage[]> | undefined
-  apiUrl = 'https://bsite.net/ronytuquizz/api'
+  allImages: Observable<AttachedImage[]> | undefined;
+  // apiUrl = "https://bsite.net/ronytuquizz/api";
+  apiUrl = "https://super-shop-api.herokuapp.com/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllImages() {
     this.allImages = this.http.get<AttachedImage[]>(`${this.apiUrl}/photos`);
@@ -18,8 +19,8 @@ export class ImageService {
   }
 
   countImage() {
-    this.allImages?.subscribe(total => {
+    this.allImages?.subscribe((total) => {
       return total.length;
-    })
+    });
   }
 }

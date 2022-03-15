@@ -6,7 +6,8 @@ import { AccountInfo } from "../models/accountInfo";
   providedIn: "root",
 })
 export class UserService {
-  apiUrl = "https://localhost:7018/";
+  // apiUrl = "https://localhost:7018/";
+  apiUrl = "https://super-shop-api.herokuapp.com/";
   constructor(private http: HttpClient) {}
 
   getUserById(userId: string) {

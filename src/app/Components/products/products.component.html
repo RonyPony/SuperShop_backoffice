@@ -280,7 +280,8 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Total de productos **</h3>
+                                                    <h3 class="card-title">Total de productos {{allProducts.length}}
+                                                    </h3>
 
                                                     <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -303,16 +304,29 @@
                                                             <tr>
                                                                 <!-- <th>ID</th> -->
                                                                 <th>Nombre</th>
-                                                                <th>Usuario</th>
-                                                                <th>Tipo de usuario</th>
-                                                                <th>Registrado en</th>
-                                                                <th>Fecha de nacimiento</th>
-                                                                <th>Correo</th>
-                                                                <th>Acciones</th>
+                                                                <th>Codigo</th>
+                                                                <th>Descripcion</th>
+                                                                <th>Precio</th>
+                                                                <th>Cantidad</th>
+                                                                <th>Tienda</th>
+                                                                <th>Foto</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-
+                                                            <tr *ngFor="let product of allProducts">
+                                                                <td>{{product.name}}</td>
+                                                                <td>{{product.code}}</td>
+                                                                <td>{{product.description}}</td>
+                                                                <td>{{product.price}}</td>
+                                                                <td>{{product.stock}}</td>
+                                                                <td>{{product.branchId}}</td>
+                                                                <td>
+                                                                    <a [routerLink]="['/userReports/'+product.id]"
+                                                                        class="btn btn-sm mx-2 btn-primary">Editar</a>
+                                                                    <a [routerLink]="['/userDetail/'+product.id]"
+                                                                        class="btn btn-sm mx-2 btn-danger">Eliminar</a>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>

@@ -7,8 +7,8 @@ import { RegisterRequest } from "../models/registerRequest";
   providedIn: "root",
 })
 export class AuthenticationService {
-  // apiUrl = 'https://super-shop-api.herokuapp.com/';
-  apiUrl = "https://localhost:7018/";
+  apiUrl = "https://super-shop-api.herokuapp.com/";
+  // apiUrl = "https://localhost:7018/";
 
   constructor(private http: HttpClient) {}
 
