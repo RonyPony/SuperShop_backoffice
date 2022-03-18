@@ -5,6 +5,7 @@ import { CategoriesComponent } from "./Components/categories/categories.componen
 import { HomeComponent } from "./Components/home/home.component";
 import { LoginComponent } from "./Components/login/login.component";
 import { MallComponent } from "./Components/mall/mall.component";
+import { NewStoreComponent } from "./Components/new-store/new-store.component";
 import { NewUserComponent } from "./Components/newUser/newUser.component";
 import { NotFoundComponent } from "./Components/not-found/not-found.component";
 import { OrdersComponent } from "./Components/orders/orders.component";
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: "mall",
     component: MallComponent,
+  },
+  {
+    path: "newStore",
+    component: NewStoreComponent,
   },
 
   {

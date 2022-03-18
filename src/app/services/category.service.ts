@@ -14,4 +14,15 @@ export class CategoryService {
   getAllCategories() {
     return this.http.get<Category[]>(`${this.apiUrl}api/Category/All`);
   }
+
+  deleteACategory(cat: Category) {
+    return this.http.delete(`${this.apiUrl}api/Category/remove/` + cat.id);
+  }
+
+  saveCategory(categoryName: string) {
+    return this.http.post(`${this.apiUrl}api/Category/save`, {
+      name: categoryName,
+      id: null,
+    });
+  }
 }

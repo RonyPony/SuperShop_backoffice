@@ -286,7 +286,8 @@
                                                         <div class="input-group input-group-sm" style="width: 150px;">
                                                             <!-- <input type="text" name="table_search" class="form-control float-right"
                                 placeholder="Search"> -->
-                                                            <a [routerLink]="['/addUser']"
+                                                            <a [routerLink]="['/newStore']"
+                                                                routerLinkActive="router-link-active"
                                                                 class="btn btn-sm mx-2 btn-primary">Nueva Tienda</a>
                                                             <!-- <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
@@ -317,7 +318,7 @@
                                                                 <td>{{branch.name}}</td>
                                                                 <td>{{branch.tmpCategoryName}}</td>
                                                                 <td>{{branch.mallId}}</td>
-                                                                <td>{{branch.products.length}}</td>
+                                                                <td>{{branch.products!.length}}</td>
                                                                 <td>
                                                                     <img height="20" [src]="[branch.imageUrl]">
                                                                 </td>
@@ -326,7 +327,7 @@
                                                                 <td>
                                                                     <a [routerLink]="['/userReports/'+branch.id]"
                                                                         class="btn btn-sm mx-2 btn-primary">Editar</a>
-                                                                    <a [routerLink]="['/userDetail/'+branch.id]"
+                                                                    <a (click)="deleteTienda(branch)"
                                                                         class="btn btn-sm mx-2 btn-danger">Eliminar</a>
                                                                 </td>
                                                             </tr>

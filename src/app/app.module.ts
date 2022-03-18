@@ -23,6 +23,7 @@ import { CategoriesComponent } from "./Components/categories/categories.componen
 import { MallComponent } from "./Components/mall/mall.component";
 import { OrdersComponent } from "./Components/orders/orders.component";
 import { ProductsComponent } from "./Components/products/products.component";
+import { NewStoreComponent } from './Components/new-store/new-store.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { ProductsComponent } from "./Components/products/products.component";
     MallComponent,
     OrdersComponent,
     ProductsComponent,
+    NewStoreComponent,
   ],
   imports: [
     BrowserModule,
