@@ -78,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             Categoria<br>
                                                             <select formControlName="categoryId" name="categoryId"
                                                                 id="categoryId" class="form-control select">
-                                                                <option value="item.id"
+                                                                <option value="{{item.id}}"
                                                                     *ngFor="let item of _categories">
                                                                     {{item.name}}
                                                                 </option>
@@ -87,10 +87,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                                         <div class="input-group mb-3">
                                                             Mall
-                                                            <select formControlName="mallId" name="mall" id="mall"
+                                                            <select formControlName="mallId" name="mallx" id="mallx"
                                                                 class="form-control select">
-                                                                <option value="item.id" *ngFor="let item of _malls">
-                                                                    {{item.name}}
+                                                                <option value="{{item2.id}}"
+                                                                    *ngFor="let item2 of _malls">
+                                                                    {{item2.name}}
                                                                 </option>
                                                             </select>
                                                         </div>

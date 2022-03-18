@@ -20,9 +20,9 @@ export class CategoryService {
   }
 
   saveCategory(categoryName: string) {
+    console.log(categoryName);
     return this.http.post(`${this.apiUrl}api/Category/save`, {
       name: categoryName,
-      id: null,
     });
   }
 }

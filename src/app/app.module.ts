@@ -24,6 +24,8 @@ import { MallComponent } from "./Components/mall/mall.component";
 import { OrdersComponent } from "./Components/orders/orders.component";
 import { ProductsComponent } from "./Components/products/products.component";
 import { NewStoreComponent } from './Components/new-store/new-store.component';
+import { NewMallComponent } from './Components/new-mall/new-mall.component';
+import { NewProductComponent } from './Components/new-product/new-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,8 @@ import { NewStoreComponent } from './Components/new-store/new-store.component';
     OrdersComponent,
     ProductsComponent,
     NewStoreComponent,
+    NewMallComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,

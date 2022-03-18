@@ -5,6 +5,8 @@ import { CategoriesComponent } from "./Components/categories/categories.componen
 import { HomeComponent } from "./Components/home/home.component";
 import { LoginComponent } from "./Components/login/login.component";
 import { MallComponent } from "./Components/mall/mall.component";
+import { NewMallComponent } from "./Components/new-mall/new-mall.component";
+import { NewProductComponent } from "./Components/new-product/new-product.component";
 import { NewStoreComponent } from "./Components/new-store/new-store.component";
 import { NewUserComponent } from "./Components/newUser/newUser.component";
 import { NotFoundComponent } from "./Components/not-found/not-found.component";
@@ -73,6 +75,14 @@ const routes: Routes = [
   {
     path: "newStore",
     component: NewStoreComponent,
+  },
+  {
+    path: "newProduct",
+    component: NewProductComponent,
+  },
+  {
+    path: "newMall",
+    component: NewMallComponent,
   },
 
   {

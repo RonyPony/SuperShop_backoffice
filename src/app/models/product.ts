@@ -6,7 +6,7 @@ export interface Product {
   stock: number;
   imageUrl: string;
   branchId: string;
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
+  id?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
