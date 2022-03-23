@@ -3,11 +3,13 @@ import { AccountInfo, AccountInfoResponse } from "src/app/models/accountInfo";
 import { Branch } from "src/app/models/branch";
 import { Category } from "src/app/models/category";
 import { Mall } from "src/app/models/mall";
+import { Order } from "src/app/models/order";
 import { Product } from "src/app/models/product";
 import { BranchService } from "src/app/services/branch.service";
 import { CategoryService } from "src/app/services/category.service";
 import { ImageService } from "src/app/services/image.service";
 import { MallService } from "src/app/services/mall.service";
+import { OrdersService } from "src/app/services/orders.service";
 import { ProductService } from "src/app/services/product.service";
 import { ReportsService } from "src/app/services/reports.service";
 import { UserService } from "src/app/services/user.service";
@@ -29,30 +31,42 @@ export class HomeComponent implements OnInit {
     private branchStore: BranchService,
     private productService: ProductService,
     private mallService: MallService,
-    private userService:UserService,
-    private categorySerice:CategoryService
+    private userService: UserService,
+    private categorySerice: CategoryService,
+    private orderServ: OrdersService
   ) {}
 
   ngOnInit() {
-    var tmpUser =  localStorage.getItem('currentUser') as unknown as AccountInfoResponse
+    var tmpUser = localStorage.getItem(
+      "currentUser"
+    ) as unknown as AccountInfoResponse;
     // this.currentUser = tmpUser.data.find(e=>true)
-    console.log(localStorage.getItem('currentUser'))
+    console.log(localStorage.getItem("currentUser"));
     this.countBranch();
     this.countProduct();
     this.countMalls();
     this.countUsers();
     this.countCategories();
+    this.countOrders();
   }
   countBranch() {
     this.branchStore.getAllBranches().subscribe((all) => {
-      var list = all  as  Branch[];
+      var list = all as Branch[];
 
       this.tiendas = list.length;
     });
   }
+
+  countOrders() {
+    this.orderServ.getAllOrders().subscribe((all) => {
+      var list = all as Order[];
+
+      this.orders = list.length;
+    });
+  }
   countProduct() {
     this.productService.getAllProducts().subscribe((all) => {
-      var list = all  as  Product[];
+      var list = all as Product[];
 
       this.productos = list.length;
     });
@@ -60,7 +74,7 @@ export class HomeComponent implements OnInit {
 
   countMalls() {
     this.mallService.getAllMalls().subscribe((all) => {
-      var list = all  as  Mall[];
+      var list = all as Mall[];
 
       this.malls = list.length;
     });
@@ -68,7 +82,7 @@ export class HomeComponent implements OnInit {
 
   countCategories() {
     this.categorySerice.getAllCategories().subscribe((all) => {
-      var list = all  as  Category[];
+      var list = all as Category[];
 
       this.categories = list.length;
     });
@@ -77,7 +91,6 @@ export class HomeComponent implements OnInit {
   countOrdrs() {
     // this.or.().subscribe((all) => {
     //   var list = all  as  Mall[];
-
     //   this.malls = list.length;
     // });
   }
@@ -88,6 +101,4 @@ export class HomeComponent implements OnInit {
       this.users = x.length;
     });
   }
-
- 
 }

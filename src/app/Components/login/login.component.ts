@@ -1,6 +1,12 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, NgControl, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgControl,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { AccountInfo, AccountInfoResponse } from "src/app/models/accountInfo";
 import { LoginRequest } from "src/app/models/loginRequest";
@@ -15,7 +21,11 @@ import Swal from "sweetalert2";
 })
 export class LoginComponent implements OnInit {
   loginRequest: LoginRequest | undefined;
+  fieldTextType!: boolean;
 
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
   loginForm: FormGroup = new FormGroup({
     email: new FormControl("", Validators.required),
     password: new FormControl("", Validators.required),
@@ -23,13 +33,21 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
     this.authenticationService
       .getUsers()
       .subscribe((response) => console.log(response));
+  }
+
+  initLoginForm() {
+    this.loginForm = this.fb.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required],
+    });
   }
 
   register() {
@@ -46,20 +64,21 @@ export class LoginComponent implements OnInit {
       (response) => {
         var resp = response as LoginResponse;
         if (resp.result.isSuccess) {
-          this.authenticationService.getUserByEmail(this.loginRequest!.userName).subscribe((response)=>{
-            var resp= response as AccountInfoResponse;
-            if (resp.isSuccess) {
-              localStorage.setItem("currentUser", JSON.stringify(resp));
-            this.router.navigate(["/home"]);
-            }else{
-              Swal.fire(
-                "Hey!",
-                "Infomacion correcta, pero no pudimos cargar tu informacion, favor comunicate con el administrador",
-                "error"
-              );
-            }
-          })
-          
+          this.authenticationService
+            .getUserByEmail(this.loginRequest!.userName)
+            .subscribe((response) => {
+              var resp = response as AccountInfoResponse;
+              if (resp.isSuccess) {
+                localStorage.setItem("currentUser", JSON.stringify(resp));
+                this.router.navigate(["/home"]);
+              } else {
+                Swal.fire(
+                  "Hey!",
+                  "Infomacion correcta, pero no pudimos cargar tu informacion, favor comunicate con el administrador",
+                  "error"
+                );
+              }
+            });
         } else {
           Swal.fire(
             "Ups!",

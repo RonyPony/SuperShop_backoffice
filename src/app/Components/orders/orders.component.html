@@ -325,9 +325,9 @@
                                                                 <td>{{order.totalWhitoutTaxes}}</td>
                                                                 <td>{{order.userId}}</td>
                                                                 <td>
-                                                                    <a [routerLink]="['/orderReports/'+order.id]"
+                                                                    <a (click)="seeDetails(order)"
                                                                         class="btn btn-sm mx-2 btn-primary">Ver
-                                                                        Productos</a>
+                                                                        Detalles</a>
                                                                     <a (click)="deleteorder(order)"
                                                                         class="btn btn-sm mx-2 btn-danger">Eliminar</a>
                                                                 </td>
@@ -341,7 +341,7 @@
                                         </div>
                                     </div>
                                     <!-- /.row -->
-                                    <a class="btn btn-primary">Refrescar</a>
+                                    <a (click)="loadOrders()" class="btn btn-primary">Refrescar</a>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,14 @@ import Swal from "sweetalert2";
 })
 export class RegisterComponent implements OnInit {
   registerAccountRequest: RegisterRequest | undefined;
-
+  fieldTextType!: boolean;
+  fieldTextType2!: boolean;
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+  toggleFieldTextType2() {
+    this.fieldTextType2 = !this.fieldTextType2;
+  }
   registerForm: FormGroup = new FormGroup({
     userName: new FormControl(""),
     name: new FormControl(""),

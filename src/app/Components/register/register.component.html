@@ -58,20 +58,27 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" formControlName="password" placeholder="Clave">
+            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password"
+              placeholder="Clave">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+                <span class="fa" [ngClass]="{
+          'fa-eye-slash': fieldTextType,
+          'fa-eye': !fieldTextType
+        }" (click)="toggleFieldTextType()"></span>
               </div>
             </div>
           </div>
 
 
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Retype password">
+            <input [type]="fieldTextType2 ? 'text' : 'password'" class="form-control" placeholder="Retype password">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+                <span class="fa" [ngClass]="{
+          'fa-eye-slash': fieldTextType2,
+          'fa-eye': !fieldTextType2
+        }" (click)="toggleFieldTextType2()"></span>
               </div>
             </div>
           </div>

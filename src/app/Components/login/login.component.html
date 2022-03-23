@@ -35,13 +35,18 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" formControlName="password" name="password" class="form-control" placeholder="Clave">
+            <input [type]="fieldTextType ? 'text' : 'password'" formControlName="password" name="password"
+              class="form-control" placeholder="Clave">
             <div class="input-group-append">
               <div class="input-group-text">
-                <span class="fas fa-lock"></span>
+                <span class="fa" [ngClass]="{
+          'fa-eye-slash': fieldTextType,
+          'fa-eye': !fieldTextType
+        }" (click)="toggleFieldTextType()"></span>
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">

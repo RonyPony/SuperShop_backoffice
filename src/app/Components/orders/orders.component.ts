@@ -15,6 +15,24 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.loadOrders();
   }
+
+  seeDetails(order: Order) {
+    Swal.fire({
+      title: "<strong>DETALLES DE LA ORDEN</strong>",
+      icon: "info",
+      html:
+        "You can use <b>bold text</b>, " +
+        '<a href="//sweetalert2.github.io">links</a> ' +
+        "and other HTML tags",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+      confirmButtonAriaLabel: "Thumbs up, great!",
+      cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+      cancelButtonAriaLabel: "Thumbs down",
+    });
+  }
   deleteorder(order: Order) {
     this.orderService.deleteOrder(order).subscribe((response) => {
       const result = response as Result;
