@@ -25,6 +25,8 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
+
+
                 <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
         </li>
@@ -274,6 +276,7 @@
                                     <h5 class="m-0">Todas las ordenes</h5>
                                 </div>
 
+
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
@@ -299,17 +302,36 @@
                                                         <thead>
                                                             <tr>
                                                                 <!-- <th>ID</th> -->
-                                                                <th>Nombre</th>
+                                                                <th>Direccion</th>
+                                                                <th>Tienda</th>
+                                                                <th>Completada</th>
+                                                                <th>Comprado en</th>
+                                                                <th>Productos</th>
+                                                                <th>Total</th>
+                                                                <th>Total impuestos</th>
+                                                                <th>Total con impuestos</th>
                                                                 <th>Usuario</th>
-                                                                <th>Tipo de usuario</th>
-                                                                <th>Registrado en</th>
-                                                                <th>Fecha de nacimiento</th>
-                                                                <th>Correo</th>
-                                                                <th>Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-
+                                                            <tr *ngFor="let order of _orders">
+                                                                <td>{{order.address}}</td>
+                                                                <td>{{order.branch.name}}</td>
+                                                                <td>{{order.completed}}</td>
+                                                                <td>{{order.createdAt}}</td>
+                                                                <td>{{order.products.length}}</td>
+                                                                <td>{{order.total}}</td>
+                                                                <td>{{order.totalTax}}</td>
+                                                                <td>{{order.totalWhitoutTaxes}}</td>
+                                                                <td>{{order.userId}}</td>
+                                                                <td>
+                                                                    <a [routerLink]="['/orderReports/'+order.id]"
+                                                                        class="btn btn-sm mx-2 btn-primary">Ver
+                                                                        Productos</a>
+                                                                    <a (click)="deleteorder(order)"
+                                                                        class="btn btn-sm mx-2 btn-danger">Eliminar</a>
+                                                                </td>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>

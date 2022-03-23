@@ -8,6 +8,7 @@ import { Branch } from "../models/branch";
 export class BranchService {
   // apiUrl = "https://localhost:7018/";
   apiUrl = "https://super-shop-api.herokuapp.com/";
+  // apiUrl = "https://24ef-64-32-111-188.ngrok.io/";
   constructor(private http: HttpClient) {}
 
   getAllBranches() {

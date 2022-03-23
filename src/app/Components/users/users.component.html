@@ -324,8 +324,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <td>
                                   <a [routerLink]="['/userReports/'+user.id]" class="btn btn-sm mx-2 btn-primary">Ver
                                     Reportes</a>
-                                  <a [routerLink]="['/userDetail/'+user.id]"
-                                    class="btn btn-sm mx-2 btn-danger">Eliminar</a>
+                                  <a (click)="deleteUser(user.id)" class="btn btn-sm mx-2 btn-danger">Eliminar</a>
                                 </td>
                               </tr>
                             </tbody>

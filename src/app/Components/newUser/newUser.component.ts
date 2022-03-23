@@ -1,64 +1,82 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { BOOL_TYPE } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RegisterRequest } from 'src/app/models/registerRequest';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { HttpErrorResponse } from "@angular/common/http";
+import { BOOL_TYPE } from "@angular/compiler/src/output/output_ast";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AccountInfoResponse } from "src/app/models/accountInfo";
+import { RegisterRequest } from "src/app/models/registerRequest";
+import { AuthenticationService } from "src/app/services/authentication.service";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-newUser',
-  templateUrl: './newUser.component.html',
-  styleUrls: ['./newUser.component.scss']
+  selector: "app-newUser",
+  templateUrl: "./newUser.component.html",
+  styleUrls: ["./newUser.component.scss"],
 })
 export class NewUserComponent implements OnInit {
-
   registerForm: FormGroup = new FormGroup({
-    nombre: new FormControl('', Validators.required),
-    userName: new FormControl(''),
-    password: new FormControl('', Validators.required),
-    role: new FormControl('', Validators.required),
-    registerDate: new FormControl('', Validators.required),
-    bornDate: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-  })
-  errorMessage: String | undefined
-  registerRequest: RegisterRequest | undefined
+    nombre: new FormControl("", Validators.required),
+    userName: new FormControl(""),
+    password: new FormControl("", Validators.required),
+    role: new FormControl("", Validators.required),
+    registerDate: new FormControl("", Validators.required),
+    bornDate: new FormControl("", Validators.required),
+    email: new FormControl("", Validators.required),
+  });
+  errorMessage: String | undefined;
+  registerRequest: RegisterRequest | undefined;
 
+  constructor(private authenticationService: AuthenticationService) {}
 
-  constructor(private authenticationService: AuthenticationService) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   register() {
     this.registerRequest = {
-      name: this.registerForm.get('nombre')?.value,
-      lastName: this.registerForm.get('lastname')?.value,
-      userName: this.registerForm.get('userName')?.value,
-      email: this.registerForm.get('email')?.value,
-      password: this.registerForm.get('password')?.value,
-    }
+      name: this.registerForm.get("nombre")?.value,
+      lastName: this.registerForm.get("lastname")?.value,
+      userName: this.registerForm.get("userName")?.value,
+      email: this.registerForm.get("email")?.value,
+      password: this.registerForm.get("password")?.value,
+    };
 
     if (this.registerRequest.userName.includes(" ")) {
-      this.errorMessage = "Nombre de usuario invalido, no puede contener espacios, ni caracteres especiales"
+      this.errorMessage =
+        "Nombre de usuario invalido, no puede contener espacios, ni caracteres especiales";
     } else {
       if (this.registerRequest.password.length < 10) {
-        this.errorMessage = "La clave debe tener mas de 10 caracteres"
+        this.errorMessage = "La clave debe tener mas de 10 caracteres";
       } else {
-        if (this.registerRequest.name == "" || this.registerRequest.email == "" || this.registerRequest.userName == "" || this.registerRequest.password == "") {
+        if (
+          this.registerRequest.name == "" ||
+          this.registerRequest.email == "" ||
+          this.registerRequest.userName == "" ||
+          this.registerRequest.password == ""
+        ) {
           this.errorMessage = "Complete todos los campos";
         } else {
-          this.authenticationService.registerAccount(
-            this.registerRequest
-          ).subscribe(response => {
-            console.log(response);
-          });
+          this.authenticationService
+            .registerAccount(this.registerRequest)
+            .subscribe((response) => {
+              console.log(response);
+              var result = response as AccountInfoResponse;
+              if (result.isSuccess) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Bienvenido, ya puedes iniciar sesion",
+                  showConfirmButton: true,
+                });
+              } else {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "error",
+                  title: "No se pudo registrar el usuario, intentalo luego",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
         }
       }
     }
-
-
-
   }
-
 }

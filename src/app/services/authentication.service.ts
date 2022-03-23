@@ -16,21 +16,19 @@ export class AuthenticationService {
     return this.http.get(`${this.apiUrl}api/auth/UserAuth/users`);
   }
 
-  getUserByEmail(email:string) {
-    return this.http.get(`${this.apiUrl}api/auth/UserAuth/user/`+email);
+  getUserByEmail(email: string) {
+    return this.http.get(`${this.apiUrl}api/auth/UserAuth/user/` + email);
   }
 
   login(request: LoginRequest) {
     return this.http.post(`${this.apiUrl}api/auth/UserAuth/login`, request);
   }
 
-  registerAccount(request: RegisterRequest) {
-    console.log("email => " + request.email);
-    console.log("name => " + request.name);
-    console.log("lastName =>" + request.lastName);
-    console.log("pass => " + request.password);
-    console.log("user => " + request.userName);
+  deleteUser(userId: String) {
+    return this.http.delete(`${this.apiUrl}api/auth/UserAuth/remove/` + userId);
+  }
 
+  registerAccount(request: RegisterRequest) {
     return this.http.post(
       `${this.apiUrl}api/auth/UserAuth/register/admin`,
       request
