@@ -305,9 +305,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Fecha de registro</th>
-                                <th>Registrado en</th>
-                                <th>Email</th>
                                 <th>Correo</th>
+                                <th>Fecha de creacion</th>
                                 <th>Acciones</th>
                               </tr>
                             </thead>
@@ -319,11 +318,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <td>{{user.registrationDate}}</td>
                                 <td>{{user.email}}</td>
                                 <td>{{user.createdAt}}</td>
-                                <td>{{user.email}}</td>
 
                                 <td>
-                                  <a [routerLink]="['/userReports/'+user.id]" class="btn btn-sm mx-2 btn-primary">Ver
-                                    Reportes</a>
+                                  <a [routerLink]="['/userEdit/'+user.id]"
+                                    class="btn btn-sm mx-2 btn-primary">Editar</a>
                                   <a (click)="deleteUser(user.id)" class="btn btn-sm mx-2 btn-danger">Eliminar</a>
                                 </td>
                               </tr>

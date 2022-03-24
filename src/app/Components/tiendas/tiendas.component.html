@@ -316,8 +316,8 @@
                                                             <tr *ngFor="let branch of allBranches">
                                                                 <!-- <td>{{user.id}}</td> -->
                                                                 <td>{{branch.name}}</td>
-                                                                <td>{{branch.categoryId}}</td>
-                                                                <td>{{branch.mallId}}</td>
+                                                                <td>{{getCategoryName(branch.categoryId)}}</td>
+                                                                <td>{{getMallName(branch.mallId)}}</td>
                                                                 <td>{{branch.products!.length}}</td>
                                                                 <td>
                                                                     <img height="20" [src]="[branch.imageUrl]">

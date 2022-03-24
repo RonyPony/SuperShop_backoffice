@@ -282,7 +282,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Total de ordenes **</h3>
+                                                    <h3 class="card-title">Total de ordenes {{_orders.length}}</h3>
 
                                                     <div class="card-tools">
                                                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -302,6 +302,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <!-- <th>ID</th> -->
+                                                                <th>Usuario</th>
                                                                 <th>Direccion</th>
                                                                 <th>Tienda</th>
                                                                 <th>Completada</th>
@@ -310,11 +311,12 @@
                                                                 <th>Total</th>
                                                                 <th>Total impuestos</th>
                                                                 <th>Total con impuestos</th>
-                                                                <th>Usuario</th>
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr *ngFor="let order of _orders">
+                                                                <td>{{getUserName(order.userId)}}</td>
                                                                 <td>{{order.address}}</td>
                                                                 <td>{{order.branch.name}}</td>
                                                                 <td>{{order.completed}}</td>
@@ -323,7 +325,7 @@
                                                                 <td>{{order.total}}</td>
                                                                 <td>{{order.totalTax}}</td>
                                                                 <td>{{order.totalWhitoutTaxes}}</td>
-                                                                <td>{{order.userId}}</td>
+
                                                                 <td>
                                                                     <a (click)="seeDetails(order)"
                                                                         class="btn btn-sm mx-2 btn-primary">Ver

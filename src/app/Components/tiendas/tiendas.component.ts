@@ -2,8 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Branch } from "src/app/models/branch";
 import { Category } from "src/app/models/category";
 import { Result } from "src/app/models/loginResponse";
+import { Mall } from "src/app/models/mall";
 import { BranchService } from "src/app/services/branch.service";
 import { CategoryService } from "src/app/services/category.service";
+import { MallService } from "src/app/services/mall.service";
 import Swal from "sweetalert2";
 
 @Component({
@@ -13,21 +15,23 @@ import Swal from "sweetalert2";
 })
 export class TiendasComponent implements OnInit {
   allBranches!: Branch[];
-  allCategories: Category[] = [];
+  allCategories!: Category[];
+  _malls!: Mall[];
   constructor(
     private branchService: BranchService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private mallServ: MallService
   ) {}
 
   ngOnInit(): void {
+    this.loadMalls();
     this.loadBranches();
-    this.syncCategories();
     this.loadCategories();
   }
   loadCategories() {
     this.categoryService.getAllCategories().subscribe((gg) => {
       var tt = gg as Category[];
-      console.log(tt);
+      console.log("Categorias", tt);
       this.allCategories = tt;
     });
   }
@@ -79,6 +83,29 @@ export class TiendasComponent implements OnInit {
       },
     });
   }
+  getMallName(mallId: String) {
+    if (this._malls) {
+      return this._malls.find((x) => x.id == mallId)?.name;
+    } else {
+      return mallId;
+    }
+  }
+
+  loadMalls() {
+    this.mallServ.getAllMalls().subscribe((tt) => {
+      var result = tt as Mall[];
+      this._malls = result;
+      console.log("Malls", this._malls);
+    });
+  }
+
+  getCategoryName(catId: String) {
+    if (this.allCategories) {
+      return this.allCategories.find((x) => x.id == catId)?.name;
+    } else {
+      return catId;
+    }
+  }
 
   sendStoreInfo(store: Branch) {
     this.branchService.createBranch(store).subscribe((response) => {
@@ -96,17 +123,6 @@ export class TiendasComponent implements OnInit {
         });
         this.loadBranches();
       }
-    });
-  }
-
-  syncCategories() {
-    this.allBranches.forEach((pp) => {
-      // var tmpCatId = pp.categoryId;
-      // this.branchService.getCategoryById(tmpCatId).subscribe((response) => {
-      //   var resp = response as unknown as Category;
-      //   console.log(response);
-      //   pp.tmpCategoryName = resp.name;
-      // });
     });
   }
 
