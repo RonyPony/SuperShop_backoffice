@@ -11,10 +11,15 @@ export interface Order {
   address: string;
   total: number;
   totalWhitoutTaxes: number;
+  transactionDetails: PaymentType;
   totalTax: number;
   completed: boolean;
   branch: Branch;
   productOrderDtos: ProductOrderDto[];
+}
+
+export interface PaymentType {
+  paymentType: string;
 }
 
 export interface ProductOrderDto {

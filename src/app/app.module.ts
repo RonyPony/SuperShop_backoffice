@@ -26,6 +26,7 @@ import { ProductsComponent } from "./Components/products/products.component";
 import { NewStoreComponent } from './Components/new-store/new-store.component';
 import { NewMallComponent } from './Components/new-mall/new-mall.component';
 import { NewProductComponent } from './Components/new-product/new-product.component';
+import { EditMallComponent } from './Components/edit-mall/edit-mall.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { NewProductComponent } from './Components/new-product/new-product.compon
     NewStoreComponent,
     NewMallComponent,
     NewProductComponent,
+    EditMallComponent,
   ],
   imports: [
     BrowserModule,

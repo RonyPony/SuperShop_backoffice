@@ -21,6 +21,48 @@ export class CategoriesComponent implements OnInit {
     this.loadCategories();
   }
 
+  update(cat: Category) {
+    Swal.fire({
+      title: "Actualiza la categoria",
+      input: "text",
+      inputValue: cat.name,
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: true,
+      // inputPlaceholder:cat.name,
+      confirmButtonText: "Actualizar",
+      showLoaderOnConfirm: true,
+      preConfirm: (login) => {
+        var catName = login;
+        console.log(catName);
+        this._service.updateCategory(catName, cat.id).subscribe((response) => {
+          var result = response as Result;
+          if (!result.isSuccess) {
+            Swal.showValidationMessage(`Request failed`);
+            this.loadCategories();
+          } else {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Categoria Actualizada",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.loadCategories();
+          }
+        });
+      },
+      allowOutsideClick: () => !Swal.isLoading(),
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `Cargando...`,
+        });
+      }
+    });
+  }
+
   deleteCategory(cat: Category) {
     Swal.fire({
       title: "Seguro quieres eliminar la categoria " + cat.name + " ?",

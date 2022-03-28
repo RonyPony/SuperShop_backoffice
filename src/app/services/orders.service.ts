@@ -26,6 +26,10 @@ export class OrdersService {
     return this.http.post(`${this.apiUrl}api/Order/save`, request);
   }
 
+  updateOrder(order: Order) {
+    return this.http.put(`${this.apiUrl}api/Order/update`, order);
+  }
+
   getOrderById(orderId: string) {
     return this.http.get(`${this.apiUrl}api/Order/` + orderId);
   }

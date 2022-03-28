@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { CategoriesComponent } from "./Components/categories/categories.component";
+import { EditMallComponent } from "./Components/edit-mall/edit-mall.component";
 import { HomeComponent } from "./Components/home/home.component";
 import { LoginComponent } from "./Components/login/login.component";
 import { MallComponent } from "./Components/mall/mall.component";
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: "newMall",
     component: NewMallComponent,
+  },
+  {
+    path: "editMall/:id",
+    component: EditMallComponent,
   },
 
   {

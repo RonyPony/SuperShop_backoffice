@@ -25,4 +25,12 @@ export class CategoryService {
       name: categoryName,
     });
   }
+
+  updateCategory(categoryName: string, catId: String) {
+    console.log(categoryName);
+    return this.http.put(`${this.apiUrl}api/Category/update`, {
+      id: catId,
+      name: categoryName,
+    });
+  }
 }

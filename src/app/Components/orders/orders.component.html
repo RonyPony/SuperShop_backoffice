@@ -305,12 +305,13 @@
                                                                 <th>Usuario</th>
                                                                 <th>Direccion</th>
                                                                 <th>Tienda</th>
-                                                                <th>Completada</th>
+                                                                <th>Entregada</th>
                                                                 <th>Comprado en</th>
                                                                 <th>Productos</th>
                                                                 <th>Total</th>
                                                                 <th>Total impuestos</th>
-                                                                <th>Total con impuestos</th>
+                                                                <th>Total sin impuestos</th>
+                                                                <th>Acciones</th>
 
                                                             </tr>
                                                         </thead>
@@ -319,7 +320,7 @@
                                                                 <td>{{getUserName(order.userId)}}</td>
                                                                 <td>{{order.address}}</td>
                                                                 <td>{{order.branch.name}}</td>
-                                                                <td>{{order.completed}}</td>
+                                                                <td>{{order.completed?'Entregado':'Sin Entregar'}}</td>
                                                                 <td>{{order.createdAt}}</td>
                                                                 <td>{{order.products.length}}</td>
                                                                 <td>{{order.total}}</td>
@@ -330,6 +331,9 @@
                                                                     <a (click)="seeDetails(order)"
                                                                         class="btn btn-sm mx-2 btn-primary">Ver
                                                                         Detalles</a>
+                                                                    <a (click)="markAsCompleted(order)"
+                                                                        class="btn btn-sm mx-2 btn-warning">Ver
+                                                                        Marcar como entregada</a>
                                                                     <a (click)="deleteorder(order)"
                                                                         class="btn btn-sm mx-2 btn-danger">Eliminar</a>
                                                                 </td>

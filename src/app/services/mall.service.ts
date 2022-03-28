@@ -28,6 +28,15 @@ export class MallService {
     return this.http.delete(`${this.apiUrl}api/Mall/remove/` + mall.id);
   }
 
+  updateMall(mall: Mall) {
+    return this.http.put(`${this.apiUrl}api/Mall/update`, {
+      id: mall.id,
+      name: mall.name,
+      ImageUrl: mall.imageUrl,
+      coordinates: mall.coordinates,
+    });
+  }
+
   getMallById(mallId: String) {
     return this.http.get<Mall>(`${this.apiUrl}api/Mall/` + mallId);
   }

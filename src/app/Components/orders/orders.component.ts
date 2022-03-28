@@ -37,6 +37,32 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+  markAsCompleted(order: Order) {
+    order.completed = true;
+    this.orderService.updateOrder(order).subscribe((response) => {
+      var finalResponse = response as Result;
+      if (finalResponse.isSuccess) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "La orden ha sido actualizado correctamente",
+          showConfirmButton: false,
+          timer: 1800,
+        });
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Ha ocurrido un error",
+          text:
+            "Ha ocurrido un error al intentar marcar como completada " +
+            ". por favor intentelo otra vez ",
+          showConfirmButton: true,
+          // timer: 1800,
+        });
+      }
+    });
+  }
   loadMalls() {
     this.mallServ.getAllMalls().subscribe((tt) => {
       var result = tt as Mall[];
@@ -79,6 +105,9 @@ export class OrdersComponent implements OnInit {
         "<hr>" +
         "<b>Fecha de creacion de la orden</b> " +
         order.createdAt +
+        "<hr>" +
+        "<b>Tipo de pago</b> " +
+        order.transactionDetails.paymentType +
         "<hr>" +
         "<b>Cantidad de Productos</b> " +
         order.products.length +
@@ -128,6 +157,8 @@ export class OrdersComponent implements OnInit {
       console.log("ordenes", result);
     });
     this.loadOrders();
+    this.loadUsers();
+    this.loadMalls();
   }
 
   loadOrders() {

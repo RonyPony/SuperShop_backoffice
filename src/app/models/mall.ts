@@ -1,8 +1,10 @@
+import { Branch } from "./branch";
+
 export interface Mall {
   name: string;
   coordinates: Coordinates;
   imageUrl: string;
-  branches?: any[];
+  branches?: Branch[];
   id?: string;
   createdAt?: Date;
   updatedAt?: Date;
