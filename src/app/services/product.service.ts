@@ -26,6 +26,22 @@ export class ProductService {
     });
   }
 
+  updateProduct(prod: Product) {
+    return this.http.put(`${this.apiUrl}api/Product/update`, {
+      name: prod.name,
+      code: prod.code,
+      description: prod.description,
+      price: prod.price,
+      stock: prod.stock,
+      imageUrl: prod.imageUrl,
+      branchId: prod.branchId,
+      id: prod.id,
+    });
+  }
+  getProductById(prod: String) {
+    return this.http.get(`${this.apiUrl}api/Product/` + prod);
+  }
+
   deleteProduct(productId?: String) {
     return this.http.delete(`${this.apiUrl}api/Product/remove/` + productId);
   }

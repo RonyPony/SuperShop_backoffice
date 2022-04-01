@@ -1,0 +1,32 @@
+[debug] [2022-04-01T00:25:06.164Z] ----------------------------------------------------------------------
+[debug] [2022-04-01T00:25:06.166Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rocruz\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-04-01T00:25:06.167Z] CLI Version:   10.2.2
+[debug] [2022-04-01T00:25:06.167Z] Platform:      win32
+[debug] [2022-04-01T00:25:06.167Z] Node Version:  v14.19.1
+[debug] [2022-04-01T00:25:06.167Z] Time:          Thu Mar 31 2022 20:25:06 GMT-0400 (Atlantic Standard Time)
+[debug] [2022-04-01T00:25:06.167Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-01T00:25:06.262Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"headers"}
+[debug] [2022-04-01T00:25:06.266Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-01T00:25:06.266Z] > authorizing via signed-in user (ronel.cruz.a8@gmail.com)
+[debug] [2022-04-01T00:25:06.266Z] [iam] checking project supershop-dashboard for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-04-01T00:25:06.268Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/supershop-dashboard:testIamPermissions [none]
+[debug] [2022-04-01T00:25:06.269Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/supershop-dashboard:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-04-01T00:25:06.849Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/supershop-dashboard:testIamPermissions 200
+[debug] [2022-04-01T00:25:06.849Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/supershop-dashboard:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-04-01T00:25:06.851Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard [none]
+[debug] [2022-04-01T00:25:07.250Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard 200
+[debug] [2022-04-01T00:25:07.251Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard {"projectId":"supershop-dashboard","projectNumber":"322320658128","displayName":"SuperShop","name":"projects/supershop-dashboard","resources":{"hostingSite":"supershop-dashboard"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'supershop-dashboard'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-04-01T00:25:07.270Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard [none]
+[debug] [2022-04-01T00:25:07.655Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard 200
+[debug] [2022-04-01T00:25:07.656Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/supershop-dashboard {"projectId":"supershop-dashboard","projectNumber":"322320658128","displayName":"SuperShop","name":"projects/supershop-dashboard","resources":{"hostingSite":"supershop-dashboard"},"state":"ACTIVE"}
+[debug] [2022-04-01T00:25:07.662Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/322320658128/sites/supershop-dashboard/versions [none]
+[debug] [2022-04-01T00:25:07.662Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/322320658128/sites/supershop-dashboard/versions {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-04-01T00:25:08.457Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/322320658128/sites/supershop-dashboard/versions 200
+[debug] [2022-04-01T00:25:08.457Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/322320658128/sites/supershop-dashboard/versions {"name":"projects/322320658128/sites/supershop-dashboard/versions/9e6cbf1405784ff6","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[supershop-dashboard]: beginning deploy... 
+[info] i  hosting[supershop-dashboard]: found 18 files in deploys 
